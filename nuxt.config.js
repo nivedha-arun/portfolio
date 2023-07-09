@@ -33,15 +33,15 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     // 'tailwindcss',
   ],
+  type: 'module',
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
   ],
 
-  buildDir: 'dist',
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['gsap'],
     postcss: {
       postcssOptions: {
         plugins: {

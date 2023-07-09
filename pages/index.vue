@@ -316,8 +316,10 @@
 <script>
 import Typed from 'typed.js';
 import TagCloud from 'TagCloud';
-import gsap from 'gsap';
-import { Power2 } from 'gsap';
+import { gsap, Power2 } from 'gsap';
+import ScrollTrigger from "gsap/ScrollTrigger";
+import CSSRulePlugin from 'gsap/CSSRulePlugin';
+
 
 // import SplitType from 'split-type';
 
@@ -327,12 +329,12 @@ export default {
     return {
       script: [
         {
-          src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js',
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CSSRulePlugin.min.js',
           async: true,
           defer: true
         },
         {
-          src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js',
+          src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js',
           async: true,
           defer: true
         }
@@ -412,7 +414,7 @@ export default {
 
   mounted() {
     let self = this;
-      gsap.registerPlugin(ScrollTrigger); 
+      gsap.registerPlugin(CSSRulePlugin, ScrollTrigger);
       const typed = new Typed('#typed-text', {
         strings: ['DEVELOPER', 'DESIGNER'],
         stringsElement: null,
@@ -617,6 +619,7 @@ export default {
 
         const hamburger = document.getElementById("hamburger");
         const toggleBtn = document.getElementById("toggle-btn");
+        const menu = document.querySelector(".menu");
 
         const menuItems = document.querySelectorAll(".menu-item");
         menuItems.forEach((menuItem) => {
@@ -650,6 +653,7 @@ export default {
         toggleBtn.onclick = function (e) {
           hamburger.classList.toggle("active");
           toggleBtn.classList.toggle("active");
+          menu.classList.toggle("active");
           cursor.classList.toggle("overlay-active");
           follower.classList.toggle("overlay-active");
           overlay.classList.toggle("overlay-active");
@@ -1109,6 +1113,7 @@ body {
   top: 0;
   left: 0;
   z-index: -10;
+  display: none;
 }
 
 .overlay path {
@@ -1117,6 +1122,7 @@ body {
 
 .overlay.overlay-active {
     z-index: 10;
+    display: block;
 }
 
 #toggle-btn{
