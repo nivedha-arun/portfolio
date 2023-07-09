@@ -38,6 +38,8 @@ export default {
   modules: [
   ],
 
+  buildDir: 'dist',
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: {
